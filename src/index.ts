@@ -6,6 +6,7 @@ import typeDefs from './schema.js';
 import resolvers from './resolvers.js';
 import { connectToMongoDB } from './db.js';
 import { UserModel } from './models/User.model.js';
+import { ReqWithUserAndCookies } from './types/argTypes.js';
 
 config();
 
@@ -15,7 +16,7 @@ async function startServer() {
 	const server = new ApolloServer({
 		typeDefs,
 		resolvers,
-		context: async ({ req }) => {
+		context: async ({ req }: { req: ReqWithUserAndCookies }) => {
 			const token = req.headers.authorization || '';
 			if (!token) {
 				return { req, user: null };
