@@ -222,7 +222,7 @@ const resolvers: Resolvers = {
 
 		currentUser: async (_, __, { req }: ReqResContext): Promise<User> => {
 			const { currentUser } = req;
-			checkLoggedInUser(currentUser);
+			// checkLoggedInUser(currentUser);
 
 			const user: User = await UserModel.findById(currentUser._id)
 				.populate({
@@ -575,7 +575,7 @@ const resolvers: Resolvers = {
 			{ req }: ReqResContext
 		): Promise<boolean> => {
 			const { currentUser } = req;
-			checkLoggedInUser(currentUser);
+			// checkLoggedInUser(currentUser);
 			checkUserIsAuthor(currentUser, createdBy);
 
 			try {
@@ -667,7 +667,7 @@ const resolvers: Resolvers = {
 
 		deleteKanban: async (_, { _id, createdBy }: DeleteDocument, { req }: ReqResContext) => {
 			const { currentUser } = req;
-			checkLoggedInUser(currentUser);
+			// checkLoggedInUser(currentUser);
 			checkUserIsAuthor(currentUser, createdBy);
 
 			try {
@@ -864,7 +864,7 @@ const resolvers: Resolvers = {
 			{ _id, createdBy }: DeleteDocument,
 			{ currentUser }: UserContext
 		): Promise<boolean> => {
-			checkLoggedInUser(currentUser);
+			// checkLoggedInUser(currentUser);
 			checkUserIsAuthor(currentUser, createdBy);
 
 			try {
@@ -1013,7 +1013,7 @@ const resolvers: Resolvers = {
 
 		deleteUser: async (_, { _id, password }: DeleteUser, { req }: ReqResContext): Promise<boolean> => {
 			const { currentUser } = req;
-			checkLoggedInUser(currentUser);
+			// checkLoggedInUser(currentUser);
 			passwordValidation(password, currentUser.passwordHash);
 
 			try {
