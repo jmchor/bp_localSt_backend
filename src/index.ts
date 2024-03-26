@@ -1,6 +1,6 @@
 import { ApolloServer } from 'apollo-server-express';
 import express from 'express';
-import jwt, { JwtPayload } from 'jsonwebtoken';
+import jwt from 'jsonwebtoken';
 import { config } from 'dotenv';
 import typeDefs from './schema.js';
 import resolvers from './resolvers.js';
